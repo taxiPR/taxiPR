@@ -3,14 +3,16 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path'); // Para manejar rutas de archivos
 const fs = require('fs'); // Para manejar archivos
+require('dotenv').config(); // Cargar variables de entorno desde .env
+
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000; // Usar el puerto definido en .env o 4000 por defecto
 
 // Configuración para servir archivos estáticos desde la carpeta 'public/image'
 app.use('/image', express.static(path.join(__dirname, 'public', 'image')));
 
-// Conexión a MongoDB
-const mongoURI = 'mongodb+srv://lusp1412:Pitago1312@cluster0.ej47b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+// Conexión a MongoDB usando la variable de entorno MONGO_URI
+const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI)
   .then(() => console.log('Conectado a MongoDB'))
   .catch(err => {
@@ -179,7 +181,7 @@ app.post('/assign-driver', async (req, res) => {
       vehicle: assignedDriver.vehicle,
       bankAccount: assignedDriver.bankAccount,
       bankName: assignedDriver.bankName,
-      photo: assignedDriver.photo ? `http://192.168.1.13:4000/image/${assignedDriver.photo}` : null,
+      photo: assignedDriver.photo ? `${process.env.BACKEND_URL}/image/${assignedDriver.photo}` : null,
       location: assignedDriver.location.coordinates
     });
   } catch (error) {
