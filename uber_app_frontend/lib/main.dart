@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
 
   // Función para enviar la ubicación al backend
   Future<Map<String, dynamic>?> _sendLocationToBackend(Position position) async {
-    final url = Uri.parse('http://192.168.1.9:4000/assign-driver');
+    final url = Uri.parse('https://taxipr.onrender.com/assign-driver');
     try {
       final response = await http.post(
         url,
@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
       if (driverData['photo'].toString().startsWith('http')) {
         imageUrl = driverData['photo'];
       } else {
-        imageUrl = 'http://192.168.1.9:4000/image/${driverData['photo']}';
+        imageUrl = 'https://taxipr.onrender.com/image/${driverData['photo']}';
       }
       print('URL de la imagen: $imageUrl');
     } else {
@@ -258,7 +258,7 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
       return;
     }
 
-    final url = Uri.parse('http://192.168.1.9:4000/create-user');
+    final url = Uri.parse('https://taxipr.onrender.com/create-user');
     try {
       final response = await http.post(
         url,
@@ -366,7 +366,7 @@ class _CreateDriverScreenState extends State<CreateDriverScreen> {
       return;
     }
 
-    final url = Uri.parse('http://192.168.1.9:4000/create-driver');
+    final url = Uri.parse('https://taxipr.onrender.com/create-driver');
     try {
       var request = http.MultipartRequest('POST', url)
         ..fields['name'] = _nameController.text

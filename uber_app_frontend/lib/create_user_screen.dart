@@ -6,7 +6,7 @@ class CreateUserScreen extends StatelessWidget {
   const CreateUserScreen({super.key});
 
   Future<void> _createUser() async {
-    final url = Uri.parse('http://192.168.1.9:4000/create-user');
+    final url = Uri.parse('https://taxipr.onrender.com/create-user');
     try {
       final response = await http.post(
         url,
