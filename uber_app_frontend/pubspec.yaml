@@ -1,0 +1,25 @@
+name: uber_app_frontend
+description: A Flutter application for Uber-like services.
+
+publish_to: 'none' # Remove this line if you want to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  geolocator: ^10.1.0 # Paquete para geolocalización
+  http: ^1.2.0 # Paquete para realizar solicitudes HTTP
+  image_picker: ^0.8.7+4 # Asegúrate de usar una versión compatible
+  path_provider: ^2.1.0 # Para manejar rutas de archivos
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
